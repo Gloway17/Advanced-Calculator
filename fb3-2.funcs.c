@@ -231,7 +231,7 @@
   /* null expressions allowed in the grammar, so check for them */
   /* if/then/else */
   case 'I': 
-    if( eval( ((struct flow *)a)->cond) != 0) { check the condition
+    if( eval( ((struct flow *)a)->cond) != 0) { //check the condition
       if( ((struct flow *)a)->tl) {             
         v = eval( ((struct flow *)a)->tl);
       } else
@@ -246,12 +246,12 @@
   /* while/do */
   case 'W':
     v = 0.0;            /* a default value */
- the true branch
- the false branch
+ //the true branch
+ //the false branch
     if( ((struct flow *)a)->tl) {
-      while( eval(((struct flow *)a)->cond) != 0) evaluate the condition
+      while( eval(((struct flow *)a)->cond) != 0) //evaluate the condition
        v = eval(((struct flow *)a)->tl);         
-evaluate the target statements
+//evaluate the target statements
     }
     break;                      /* value of last statement is value of while/do */
   /* list of statements */
