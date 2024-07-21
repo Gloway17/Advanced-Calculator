@@ -8,6 +8,7 @@
 #  include <math.h>
 #  include "fb3-2.h"
 /* symbol table */
+struct symbol symtab[NHASH];
 /* hash a symbol */
 static unsigned
 symhash(char *sym)
@@ -290,4 +291,18 @@ dodef(struct symbol *name, struct symlist *syms, struct ast *func)
  if(name->func) treefree(name->func);
  name->syms = syms;
  name->func = func;
+}
+
+void yyerror(char *s, ...)
+{
+    va_list ap;
+    va_start(ap, s);
+    fprintf(stderr, "%d: error: ", yylineno);
+    vfprintf(stderr, s, ap);
+    fprintf(stderr, "\n");
+}
+int main()
+{
+    printf("> ");
+    return yyparse();
 }
